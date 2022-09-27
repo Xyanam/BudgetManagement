@@ -1,0 +1,39 @@
+.block {
+  max-width: 400px;
+  width: 100%;
+  background-color: rgb(187, 184, 184);
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.budget {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.price {
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  background-color: #006ef5;
+  border: none;
+  outline: none;
+  height: 30px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+}

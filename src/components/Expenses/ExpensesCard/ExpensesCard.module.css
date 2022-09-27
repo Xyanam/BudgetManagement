@@ -1,0 +1,31 @@
+.card {
+  max-width: 1200px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  margin: 5px auto;
+  position: relative;
+}
+.cost {
+  background-color: #006ef5;
+  color: white;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 40px;
+}
+.delete {
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  left: 97.5%;
+}
