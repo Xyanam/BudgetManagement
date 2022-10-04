@@ -11,9 +11,14 @@ interface budgetSliceState {
   budget: number;
 }
 
+const expenseJson = localStorage.getItem("expenses");
+let items: expensesType[] = expenseJson !== null ? JSON.parse(expenseJson) : [];
+const budgetJson = localStorage.getItem("budget");
+let budgetItem = budgetJson !== null ? +budgetJson : 0;
+
 const initialState: budgetSliceState = {
-  expenses: [],
-  budget: 5000,
+  expenses: items,
+  budget: budgetItem,
 };
 
 const budgetSlice = createSlice({
@@ -22,14 +27,21 @@ const budgetSlice = createSlice({
   reducers: {
     setBudget(state, action: PayloadAction<number>) {
       state.budget = action.payload;
+      localStorage.setItem("budget", JSON.stringify(state.budget));
     },
     setExpenses(state, action: PayloadAction<expensesType>) {
       state.expenses.push(action.payload);
+
+      localStorage.setItem("expenses", JSON.stringify(state.expenses));
     },
     removeExpenses(state, action: PayloadAction<string>) {
       state.expenses = state.expenses.filter(
         (expense) => expense.id !== action.payload
       );
+      let filteredExpenses = state.expenses.filter(
+        (expense) => expense.id !== action.payload
+      );
+      localStorage.setItem("expenses", JSON.stringify(filteredExpenses));
     },
   },
 });

@@ -13,7 +13,12 @@ const Remaining = () => {
     <div className={classes.block}>
       <div className={classes.remaining}>
         <p className={classes.title}>Осталось:</p>
-        <span className={classes.price}>{budget - totalSum} ₽</span>
+        <span
+          className={classes.price}
+          style={budget - totalSum < 0 ? { color: "red" } : { color: "black" }}
+        >
+          {budget - totalSum} ₽
+        </span>
       </div>
     </div>
   );

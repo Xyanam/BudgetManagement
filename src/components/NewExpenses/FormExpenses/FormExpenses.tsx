@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useAppDispatch } from "../../../redux/store";
 import classes from "./FormExpenses.module.css";
 import { setExpenses } from "../../../redux/slices/budgetSlice";
@@ -9,6 +9,8 @@ const FormExpenses = () => {
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
+
+  const inputNameRef = useRef<HTMLInputElement>(null);
 
   const newExpense = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ const FormExpenses = () => {
       dispatch(setExpenses(newExpense));
       setTitle("");
       setPrice(0);
+      inputNameRef.current?.focus();
     } else {
       alert("Введите название и цену");
     }
@@ -35,6 +38,7 @@ const FormExpenses = () => {
             placeholder="Введите название"
             type="text"
             value={title}
+            ref={inputNameRef}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setTitle(e.target.value)
             }
