@@ -19,6 +19,7 @@ const FormExpenses = () => {
         id: nextId(),
         title,
         cost: price,
+        subExpenses: [],
       };
       dispatch(setExpenses(newExpense));
       setTitle("");

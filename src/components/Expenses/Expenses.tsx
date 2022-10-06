@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import classes from "./Expenses.module.css";
 import ExpensesCard from "./ExpensesCard/ExpensesCard";
-const Expenses = () => {
+const Expenses: React.FC = () => {
   const { expenses } = useSelector((state: RootState) => state.budget);
 
   return (
@@ -16,6 +16,7 @@ const Expenses = () => {
               key={expenses.id}
               title={expenses.title}
               cost={expenses.cost}
+              subExpense={expenses.subExpenses}
               id={expenses.id}
             />
           ))

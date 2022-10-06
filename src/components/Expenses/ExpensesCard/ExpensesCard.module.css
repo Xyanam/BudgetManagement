@@ -2,7 +2,8 @@
   max-width: 1200px;
   width: 100%;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-bottom: none;
+  border-radius: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,4 +29,41 @@
   cursor: pointer;
   position: absolute;
   left: 97.5%;
+}
+.addSub {
+  font-size: 18px;
+  cursor: pointer;
+}
+.addSub:hover {
+  text-decoration: underline;
+}
+.subContainer {
+  max-width: 1150px;
+  width: 100%;
+  border: 1px solid rgb(46, 46, 46);
+  border-top: none;
+  border-bottom: none;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  margin: 5px auto;
+  position: relative;
+}
+.arrow {
+  transform: rotate(0);
+  transition: 0.3s;
+  position: absolute;
+  left: 88%;
+  cursor: pointer;
+  z-index: 20;
+}
+.arrowActive {
+  transform: rotate(180deg);
+  transition: 0.3s;
+  cursor: pointer;
+  position: absolute;
+  left: 88%;
+  z-index: 20;
 }

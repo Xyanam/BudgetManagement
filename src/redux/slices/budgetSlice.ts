@@ -1,9 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type subExpensesType = {
+  id: string;
+  title: string;
+  cost: number;
+};
+
 type expensesType = {
   id: string;
   title: string;
   cost: number;
+  subExpenses: subExpensesType[];
 };
 
 interface budgetSliceState {
@@ -43,8 +50,13 @@ const budgetSlice = createSlice({
       );
       localStorage.setItem("expenses", JSON.stringify(filteredExpenses));
     },
+    setSubExpenses(state, action: PayloadAction<subExpensesType>) {
+      const index = state.expenses.findIndex((f) => f.id === action.payload.id);
+      state.expenses[index].subExpenses.push(action.payload);
+    },
   },
 });
 
-export const { setBudget, setExpenses, removeExpenses } = budgetSlice.actions;
+export const { setBudget, setExpenses, removeExpenses, setSubExpenses } =
+  budgetSlice.actions;
 export default budgetSlice.reducer;
