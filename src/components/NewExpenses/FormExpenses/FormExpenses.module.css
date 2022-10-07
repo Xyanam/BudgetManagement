@@ -44,3 +44,15 @@
   margin-left: 50px;
   margin-top: 20px;
 }
+
+@media(max-width: 550px){
+  .form{
+    flex-direction: column;
+  }
+  .formItem input{
+    max-width: 300px;
+  }
+  .formItem{
+    margin-left: 20px;
+  }
+}
