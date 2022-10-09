@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-import { removeExpenses } from "../../../redux/slices/budgetSlice";
+import {
+  removeExpenses,
+  removeSubExpenses,
+} from "../../../redux/slices/budgetSlice";
 import { useAppDispatch } from "../../../redux/store";
 import NewSubExpenses from "../NewSubExpenses/NewSubExpenses";
 import classes from "./ExpensesCard.module.css";
@@ -65,6 +68,12 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
           <div key={exp.id} className={classes.subContainer}>
             <span className={classes.title}>{exp.title}</span>
             <span className={classes.cost}>{exp.cost} ₽</span>
+            <button
+              className={classes.delete}
+              onClick={() => dispatch(removeSubExpenses(id))}
+            >
+              X
+            </button>
           </div>
         ))}
     </div>

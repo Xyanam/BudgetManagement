@@ -54,9 +54,20 @@ const budgetSlice = createSlice({
       const index = state.expenses.findIndex((f) => f.id === action.payload.id);
       state.expenses[index].subExpenses.push(action.payload);
     },
+    removeSubExpenses(state, action: PayloadAction<string>) {
+      const index = state.expenses.findIndex((i) => i.id === action.payload);
+      state.expenses[index].subExpenses = state.expenses[
+        index
+      ].subExpenses.filter((subExp) => subExp.id !== action.payload);
+    },
   },
 });
 
-export const { setBudget, setExpenses, removeExpenses, setSubExpenses } =
-  budgetSlice.actions;
+export const {
+  setBudget,
+  setExpenses,
+  removeExpenses,
+  setSubExpenses,
+  removeSubExpenses,
+} = budgetSlice.actions;
 export default budgetSlice.reducer;
