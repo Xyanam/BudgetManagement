@@ -5,12 +5,30 @@ import classes from "./NewSubExpenses.module.css";
 
 type newSubExpensesProps = {
   id: string;
+  setActiveArrow: (arrow: boolean) => void;
 };
 
-const NewSubExpenses: React.FC<newSubExpensesProps> = ({ id }) => {
+const NewSubExpenses: React.FC<newSubExpensesProps> = ({
+  id,
+  setActiveArrow,
+}) => {
   const dispatch = useAppDispatch();
   const [title, setTitle] = useState("");
   const [cost, setCost] = useState<number>(0);
+
+  const newSubExpense = () => {
+    let subExpense = {
+      idSubExpense: Date.now(),
+      idExpense: id,
+      title: title,
+      cost: cost,
+    };
+    dispatch(setSubExpenses(subExpense));
+    setActiveArrow(true);
+    setTitle("");
+    setCost(0);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.input_blocks}>
@@ -30,19 +48,7 @@ const NewSubExpenses: React.FC<newSubExpensesProps> = ({ id }) => {
         />
       </div>
       <div>
-        <button
-          className={classes.btn}
-          onClick={() => {
-            let subExpense = {
-              id: id,
-              title: title,
-              cost: cost,
-            };
-            dispatch(setSubExpenses(subExpense));
-            setTitle("");
-            setCost(0);
-          }}
-        >
+        <button className={classes.btn} onClick={newSubExpense}>
           Добавить
         </button>
       </div>

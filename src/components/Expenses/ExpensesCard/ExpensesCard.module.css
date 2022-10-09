@@ -29,6 +29,7 @@
   cursor: pointer;
   position: absolute;
   left: 97.5%;
+  outline: none;
 }
 .addSub {
   font-size: 18px;
@@ -68,45 +69,45 @@
   z-index: 20;
 }
 
-@media(max-width: 1050px){
-  .card{
+@media (max-width: 1050px) {
+  .card {
     max-width: 800px;
   }
-  .delete{
+  .delete {
     left: 95%;
   }
-  .arrow{
+  .arrow {
     left: 80%;
   }
-  .arrowActive{
+  .arrowActive {
     left: 80%;
   }
-  .subContainer{
+  .subContainer {
     max-width: 800px;
   }
 }
-@media(max-width: 550px){
-  .delete{
-    left: 93%
+@media (max-width: 550px) {
+  .delete {
+    left: 93%;
   }
-  .arrow{
+  .arrow {
     left: 70%;
   }
-  .arrowActive{
+  .arrowActive {
     left: 70%;
   }
-  .addSub{
+  .addSub {
     font-size: 14px;
   }
-  .card{
+  .card {
     padding: 0 20px;
   }
 }
-@media(max-width:400px){
-  .arrow{
+@media (max-width: 400px) {
+  .arrow {
     left: 67%;
   }
-  .arrowActive{
+  .arrowActive {
     left: 67%;
   }
 }

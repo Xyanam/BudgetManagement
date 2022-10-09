@@ -12,7 +12,12 @@ type ExpensesCardProps = {
   id: string;
   title: string;
   cost: number;
-  subExpense: { id: string; title: string; cost: number }[];
+  subExpense: {
+    idSubExpense: number;
+    idExpense: string;
+    title: string;
+    cost: number;
+  }[];
 };
 
 const ExpensesCard: React.FC<ExpensesCardProps> = ({
@@ -62,15 +67,22 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
           X
         </button>
       </div>
-      {isVisible && <NewSubExpenses id={id} />}
+      {isVisible && <NewSubExpenses id={id} setActiveArrow={setActiveArrow} />}
       {activeArrow &&
         subExpense.map((exp) => (
-          <div key={exp.id} className={classes.subContainer}>
+          <div key={exp.idSubExpense} className={classes.subContainer}>
             <span className={classes.title}>{exp.title}</span>
             <span className={classes.cost}>{exp.cost} ₽</span>
             <button
               className={classes.delete}
-              onClick={() => dispatch(removeSubExpenses(id))}
+              onClick={() =>
+                dispatch(
+                  removeSubExpenses({
+                    id,
+                    idSubExpense: exp.idSubExpense,
+                  })
+                )
+              }
             >
               X
             </button>
