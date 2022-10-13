@@ -39,7 +39,6 @@ const budgetSlice = createSlice({
     },
     setExpenses(state, action: PayloadAction<expensesType>) {
       state.expenses.push(action.payload);
-
       localStorage.setItem("expenses", JSON.stringify(state.expenses));
     },
     removeExpenses(state, action: PayloadAction<string>) {
@@ -50,6 +49,18 @@ const budgetSlice = createSlice({
         (expense) => expense.id !== action.payload
       );
       localStorage.setItem("expenses", JSON.stringify(filteredExpenses));
+    },
+    onChangeTitle(
+      state,
+      {
+        payload,
+      }: PayloadAction<{
+        id: string;
+        title: string;
+      }>
+    ) {
+      const index = state.expenses.findIndex((idx) => idx.id === payload.id);
+      state.expenses[index].title = payload.title;
     },
     setSubExpenses(state, action: PayloadAction<subExpensesType>) {
       const index = state.expenses.findIndex(
@@ -82,5 +93,6 @@ export const {
   removeExpenses,
   setSubExpenses,
   removeSubExpenses,
+  onChangeTitle,
 } = budgetSlice.actions;
 export default budgetSlice.reducer;
