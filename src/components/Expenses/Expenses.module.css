@@ -10,8 +10,8 @@
   text-align: center;
 }
 
-@media(max-width: 450px){
-  .container{
+@media (max-width: 450px) {
+  .container {
     height: 400px;
   }
 }

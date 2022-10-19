@@ -32,6 +32,7 @@ const FormExpenses = () => {
 
   return (
     <form className={classes.container}>
+      <h1 style={{ textAlign: "center" }}>Новый расход</h1>
       <div className={classes.form}>
         <div className={classes.formItem}>
           <span>Название</span>

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import {
-  onChangeTitle,
-  removeExpenses,
-  removeSubExpenses,
-} from "../../../redux/slices/budgetSlice";
+import React, { SyntheticEvent, useState } from "react";
+import { onChangeTitle, removeExpenses } from "../../../redux/slices/budgetSlice";
 import { useAppDispatch } from "../../../redux/store";
 import NewSubExpenses from "../NewSubExpenses/NewSubExpenses";
+import SubExpenses from "../SubExpenses/SubExpenses";
 import classes from "./ExpensesCard.module.css";
 
 type ExpensesCardProps = {
@@ -27,6 +24,17 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({ title, cost, id, subExpense
   const [activeArrow, setActiveArrow] = useState(false);
   const [isTitleVisible, setIsTitleVisible] = useState(false);
   const [inputTitle, setInputTitle] = useState("");
+
+  const changeTitle = (e: SyntheticEvent) => {
+    e.preventDefault();
+    dispatch(
+      onChangeTitle({
+        id,
+        title: inputTitle,
+      })
+    );
+    setIsTitleVisible(false);
+  };
 
   return (
     <div>
@@ -68,24 +76,17 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({ title, cost, id, subExpense
                 onChange={(e) => setInputTitle(e.target.value)}
                 maxLength={16}
               />
-              <button
-                className={classes.btn}
-                onClick={() => {
-                  dispatch(
-                    onChangeTitle({
-                      id,
-                      title: inputTitle,
-                    })
-                  );
-                  setIsTitleVisible(false);
-                }}>
+              <button className={classes.btn} onClick={changeTitle}>
                 Изменить
               </button>
             </form>
           )}
         </div>
         <div onClick={() => setIsVisible(!isVisible)}>
-          <span className={classes.addSub}>Добавить подгруппу</span>
+          <span className={classes.addSub}>
+            Добавить
+            <br /> подгруппу
+          </span>
         </div>
         <div className={classes.cost}>
           <p>{cost} ₽</p>
@@ -111,25 +112,7 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({ title, cost, id, subExpense
         </button>
       </div>
       {isVisible && <NewSubExpenses id={id} setActiveArrow={setActiveArrow} />}
-      {activeArrow &&
-        subExpense.map((exp) => (
-          <div key={exp.idSubExpense} className={classes.subContainer}>
-            <span className={classes.title}>{exp.title}</span>
-            <span className={classes.cost}>{exp.cost} ₽</span>
-            <button
-              className={classes.delete}
-              onClick={() =>
-                dispatch(
-                  removeSubExpenses({
-                    id,
-                    idSubExpense: exp.idSubExpense,
-                  })
-                )
-              }>
-              X
-            </button>
-          </div>
-        ))}
+      {activeArrow && <SubExpenses subExpense={subExpense} id={id} />}
     </div>
   );
 };

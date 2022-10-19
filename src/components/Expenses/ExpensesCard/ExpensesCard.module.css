@@ -11,28 +11,28 @@
   margin: 5px auto;
   position: relative;
 }
-.title{
+.title {
   position: relative;
 }
-.editIcon{
+.editIcon {
   width: 15px;
   position: absolute;
   top: 40%;
   left: 110%;
   cursor: pointer;
 }
-.editIcon:hover{
+.editIcon:hover {
   fill: #006ef5;
   transition: 0.2s;
 }
-.inputTitle{
+.inputTitle {
   width: 200px;
   height: 25px;
   border-radius: 10px;
   border: 1px solid black;
   outline: none;
 }
-.btn{
+.btn {
   background-color: #006ef5;
   width: 100px;
   border: none;
@@ -66,15 +66,15 @@
   outline: none;
 }
 .addSub {
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
+  text-align: center;
 }
 .addSub:hover {
   text-decoration: underline;
 }
 .subContainer {
   max-width: 1150px;
-  /* width: 100%; */
   border: 1px solid rgb(46, 46, 46);
   border-top: none;
   border-bottom: none;
@@ -136,12 +136,15 @@
   .card {
     padding: 0 20px;
   }
+  .title {
+    font-size: 15px;
+  }
 }
 @media (max-width: 400px) {
   .arrow {
-    left: 67%;
+    left: 65%;
   }
   .arrowActive {
-    left: 67%;
+    left: 65%;
   }
 }

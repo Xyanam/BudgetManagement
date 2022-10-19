@@ -25,8 +25,7 @@ const Expenses: React.FC = () => {
             style={{
               textAlign: "center",
               color: "gray",
-            }}
-          >
+            }}>
             Расходов нету!
           </h2>
         )}

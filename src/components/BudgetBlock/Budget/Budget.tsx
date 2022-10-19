@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import classes from "./Budget.module.css";
@@ -17,10 +17,7 @@ const Budget = () => {
             <span className={classes.price}>{budget} ₽</span>
           </div>
           <div className={classes.btn}>
-            <button
-              className={classes.button}
-              onClick={() => setIsVisible(true)}
-            >
+            <button className={classes.button} onClick={() => setIsVisible(true)}>
               Изменить
             </button>
           </div>
