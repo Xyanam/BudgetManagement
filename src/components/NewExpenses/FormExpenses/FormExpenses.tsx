@@ -43,6 +43,7 @@ const FormExpenses = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setTitle(e.target.value)
             }
+            maxLength={16}
           />
         </div>
         <div className={classes.formItem}>

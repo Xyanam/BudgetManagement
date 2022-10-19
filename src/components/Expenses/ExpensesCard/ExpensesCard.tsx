@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   onChangeTitle,
   removeExpenses,
@@ -21,27 +20,23 @@ type ExpensesCardProps = {
   }[];
 };
 
-const ExpensesCard: React.FC<ExpensesCardProps> = ({
-  title,
-  cost,
-  id,
-  subExpense,
-}) => {
+const ExpensesCard: React.FC<ExpensesCardProps> = ({ title, cost, id, subExpense }) => {
   const dispatch = useAppDispatch();
 
   const [isVisible, setIsVisible] = useState(false);
   const [activeArrow, setActiveArrow] = useState(false);
-  const [isInputTitle, setIsInputTitle] = useState(false);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
   const [inputTitle, setInputTitle] = useState("");
+
   return (
     <div>
       <div className={classes.card}>
         <div className={classes.title}>
-          {!isInputTitle ? (
+          {!isTitleVisible ? (
             <>
               <p>{title}</p>
               <svg
-                onClick={() => setIsInputTitle(true)}
+                onClick={() => setIsTitleVisible(true)}
                 className={classes.editIcon}
                 id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +44,7 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
                 x="0px"
                 y="0px"
                 viewBox="0 0 330 330"
-                xmlSpace="preserve"
-              >
+                xmlSpace="preserve">
                 <g id="XMLID_23_">
                   <path
                     id="XMLID_24_"
@@ -66,12 +60,13 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
               </svg>
             </>
           ) : (
-            <div>
+            <form>
               <input
                 className={classes.inputTitle}
                 type="text"
                 value={inputTitle}
                 onChange={(e) => setInputTitle(e.target.value)}
+                maxLength={16}
               />
               <button
                 className={classes.btn}
@@ -82,12 +77,11 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
                       title: inputTitle,
                     })
                   );
-                  setIsInputTitle(false);
-                }}
-              >
+                  setIsTitleVisible(false);
+                }}>
                 Изменить
               </button>
-            </div>
+            </form>
           )}
         </div>
         <div onClick={() => setIsVisible(!isVisible)}>
@@ -98,8 +92,7 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
         </div>
         <div
           className={!activeArrow ? classes.arrow : classes.arrowActive}
-          onClick={() => setActiveArrow(!activeArrow)}
-        >
+          onClick={() => setActiveArrow(!activeArrow)}>
           <svg
             width="22"
             height="22"
@@ -107,17 +100,13 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 129 129"
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            enableBackground="new 0 0 129 129"
-          >
+            enableBackground="new 0 0 129 129">
             <g>
               <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" />
             </g>
           </svg>
         </div>
-        <button
-          className={classes.delete}
-          onClick={() => dispatch(removeExpenses(id))}
-        >
+        <button className={classes.delete} onClick={() => dispatch(removeExpenses(id))}>
           X
         </button>
       </div>
@@ -136,8 +125,7 @@ const ExpensesCard: React.FC<ExpensesCardProps> = ({
                     idSubExpense: exp.idSubExpense,
                   })
                 )
-              }
-            >
+              }>
               X
             </button>
           </div>

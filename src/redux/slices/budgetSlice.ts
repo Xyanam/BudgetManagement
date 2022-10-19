@@ -42,9 +42,7 @@ const budgetSlice = createSlice({
       localStorage.setItem("expenses", JSON.stringify(state.expenses));
     },
     removeExpenses(state, action: PayloadAction<string>) {
-      state.expenses = state.expenses.filter(
-        (expense) => expense.id !== action.payload
-      );
+      state.expenses = state.expenses.filter((expense) => expense.id !== action.payload);
       let filteredExpenses = state.expenses.filter(
         (expense) => expense.id !== action.payload
       );
@@ -63,9 +61,7 @@ const budgetSlice = createSlice({
       state.expenses[index].title = payload.title;
     },
     setSubExpenses(state, action: PayloadAction<subExpensesType>) {
-      const index = state.expenses.findIndex(
-        (f) => f.id === action.payload.idExpense
-      );
+      const index = state.expenses.findIndex((f) => f.id === action.payload.idExpense);
       state.expenses[index].subExpenses.push(action.payload);
     },
     removeSubExpenses(
@@ -78,9 +74,7 @@ const budgetSlice = createSlice({
       }>
     ) {
       const index = state.expenses.findIndex((i) => i.id === payload.id);
-      state.expenses[index].subExpenses = state.expenses[
-        index
-      ].subExpenses.filter(
+      state.expenses[index].subExpenses.filter(
         (subExp) => subExp.idSubExpense !== payload.idSubExpense
       );
     },

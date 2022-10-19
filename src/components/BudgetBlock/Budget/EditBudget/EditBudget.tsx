@@ -15,7 +15,7 @@ const EditBudget: React.FC<EditBudgetProps> = ({ setIsVisible }) => {
   const [value, setValue] = useState<number>(budget);
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <input
         type="number"
         placeholder="Введите бюджет"
@@ -30,11 +30,10 @@ const EditBudget: React.FC<EditBudgetProps> = ({ setIsVisible }) => {
         onClick={() => {
           dispatch(setBudget(value));
           setIsVisible(false);
-        }}
-      >
+        }}>
         Подтвердить
       </button>
-    </div>
+    </form>
   );
 };
 
