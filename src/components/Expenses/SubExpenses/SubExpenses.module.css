@@ -1,8 +1,5 @@
 .subContainer {
   max-width: 1150px;
-  border: 1px solid rgb(46, 46, 46);
-  border-top: none;
-  border-bottom: none;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -10,6 +7,7 @@
   padding: 0 40px;
   margin: 5px auto;
   position: relative;
+  border-left: 1px solid black;
 }
 .title {
   position: relative;
