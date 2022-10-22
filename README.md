@@ -25,4 +25,7 @@ $ npm start
 [budget-management-azure.vercel.app](https://budget-management-azure.vercel.app/)
 
 ## Preview project
-![Screenshot_5](https://user-images.githubusercontent.com/102315914/194779393-475b0a1e-48e4-4277-bb43-e89bf76b9b71.png)
+
+![2022-10-22 21-19-56](https://user-images.githubusercontent.com/102315914/197353948-6f6d8f8b-f429-4a3a-8ff5-f791699064d5.gif)
+
+![Screenshot_6](https://user-images.githubusercontent.com/102315914/197353941-68d76628-09b7-4d43-b1c7-c8f8042b1ecb.png)
