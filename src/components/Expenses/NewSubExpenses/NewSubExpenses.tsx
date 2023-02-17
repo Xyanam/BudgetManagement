@@ -4,14 +4,11 @@ import { useAppDispatch } from "../../../redux/store";
 import classes from "./NewSubExpenses.module.css";
 
 type newSubExpensesProps = {
-  id: string;
+  id: number;
   setActiveArrow: (arrow: boolean) => void;
 };
 
-const NewSubExpenses: React.FC<newSubExpensesProps> = ({
-  id,
-  setActiveArrow,
-}) => {
+const NewSubExpenses: React.FC<newSubExpensesProps> = ({ id, setActiveArrow }) => {
   const dispatch = useAppDispatch();
   const [title, setTitle] = useState("");
   const [cost, setCost] = useState<number>(0);

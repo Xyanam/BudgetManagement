@@ -7,12 +7,12 @@ import SubExpenses from "../SubExpenses/SubExpenses";
 import classes from "./ExpensesCard.module.css";
 
 type ExpensesCardProps = {
-  id: string;
+  id: number;
   title: string;
   cost: number;
   subExpense: {
     idSubExpense: number;
-    idExpense: string;
+    idExpense: number;
     title: string;
     cost: number;
   }[];

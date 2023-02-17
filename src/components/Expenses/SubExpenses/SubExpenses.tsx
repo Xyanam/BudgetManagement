@@ -5,11 +5,11 @@ import classes from "./SubExpenses.module.css";
 type subExpensesProps = {
   subExpense: {
     idSubExpense: number;
-    idExpense: string;
+    idExpense: number;
     title: string;
     cost: number;
   }[];
-  id: string;
+  id: number;
 };
 const SubExpenses: React.FC<subExpensesProps> = ({ subExpense, id }) => {
   const dispatch = useAppDispatch();

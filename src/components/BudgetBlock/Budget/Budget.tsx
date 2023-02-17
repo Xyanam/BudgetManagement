@@ -1,9 +1,10 @@
+import React, { FC } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import classes from "./Budget.module.css";
 import EditBudget from "./EditBudget/EditBudget";
-const Budget = () => {
+const Budget: FC = () => {
   const { budget } = useSelector((state: RootState) => state.budget);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -29,4 +30,4 @@ const Budget = () => {
   );
 };
 
-export default Budget;
+export default React.memo(Budget);

@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type subExpensesType = {
   idSubExpense: number;
-  idExpense: string;
+  idExpense: number;
   title: string;
   cost: number;
 };
 
 type expensesType = {
-  id: string;
+  id: number;
   title: string;
   cost: number;
   subExpenses: subExpensesType[];
@@ -41,11 +41,9 @@ const budgetSlice = createSlice({
       state.expenses.push(action.payload);
       localStorage.setItem("expenses", JSON.stringify(state.expenses));
     },
-    removeExpenses(state, action: PayloadAction<string>) {
+    removeExpenses(state, action: PayloadAction<number>) {
       state.expenses = state.expenses.filter((expense) => expense.id !== action.payload);
-      let filteredExpenses = state.expenses.filter(
-        (expense) => expense.id !== action.payload
-      );
+      let filteredExpenses = state.expenses.filter((expense) => expense.id !== action.payload);
       localStorage.setItem("expenses", JSON.stringify(filteredExpenses));
     },
     onChangeTitle(
@@ -53,7 +51,7 @@ const budgetSlice = createSlice({
       {
         payload,
       }: PayloadAction<{
-        id: string;
+        id: number;
         title: string;
       }>
     ) {
@@ -70,7 +68,7 @@ const budgetSlice = createSlice({
       {
         payload,
       }: PayloadAction<{
-        id: string;
+        id: number;
         idSubExpense: number;
       }>
     ) {
@@ -82,12 +80,6 @@ const budgetSlice = createSlice({
   },
 });
 
-export const {
-  setBudget,
-  setExpenses,
-  removeExpenses,
-  setSubExpenses,
-  removeSubExpenses,
-  onChangeTitle,
-} = budgetSlice.actions;
+export const { setBudget, setExpenses, removeExpenses, setSubExpenses, removeSubExpenses, onChangeTitle } =
+  budgetSlice.actions;
 export default budgetSlice.reducer;

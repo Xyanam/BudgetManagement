@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
-import { useAppDispatch } from "../../../redux/store";
+import React, { FC, useRef, useState } from "react";
+import { useAppDispatch } from "../../redux/store";
 import classes from "./FormExpenses.module.css";
-import { setExpenses } from "../../../redux/slices/budgetSlice";
-import nextId from "react-id-generator";
+import { setExpenses } from "../../redux/slices/budgetSlice";
 
-const FormExpenses = () => {
+type FormExpensesProps = {
+  setIsVisible: (flag: boolean) => void;
+};
+
+const FormExpenses: FC<FormExpensesProps> = ({ setIsVisible }) => {
   const dispatch = useAppDispatch();
 
   const [title, setTitle] = useState("");
@@ -16,7 +19,7 @@ const FormExpenses = () => {
     e.preventDefault();
     if (title.length > 1 && price > 1) {
       let newExpense = {
-        id: nextId(),
+        id: Date.now(),
         title,
         cost: price,
         subExpenses: [],
@@ -41,9 +44,7 @@ const FormExpenses = () => {
             type="text"
             value={title}
             ref={inputNameRef}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setTitle(e.target.value)
-            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
             maxLength={16}
           />
         </div>
@@ -53,13 +54,17 @@ const FormExpenses = () => {
             placeholder="Введите цену"
             type="number"
             value={price}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPrice(parseInt(e.target.value))
-            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrice(parseInt(e.target.value))}
           />
         </div>
       </div>
-      <button type="submit" className={classes.btn} onClick={newExpense}>
+      <button
+        type="submit"
+        className={classes.btn}
+        onClick={(e) => {
+          newExpense(e);
+          setIsVisible(false);
+        }}>
         Добавить
       </button>
     </form>
