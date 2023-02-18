@@ -21,7 +21,6 @@ function App() {
           Создать новый расход
         </button>
       </div>
-
       <h1 style={{ textAlign: "center", marginTop: "40px" }}>Диаграмма расходов</h1>
       <div style={{ width: 320, height: 320, margin: "50px auto" }}>
         <ChartDiagram />

@@ -21,9 +21,7 @@ const EditBudget: React.FC<EditBudgetProps> = ({ setIsVisible }) => {
         placeholder="Введите бюджет"
         className={classes.input}
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValue(parseInt(e.target.value))
-        }
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(parseInt(e.target.value))}
       />
       <button
         className={classes.btn}

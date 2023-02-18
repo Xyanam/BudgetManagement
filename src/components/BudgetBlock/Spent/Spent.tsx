@@ -5,9 +5,7 @@ import classes from "./Spent.module.css";
 const Spent: React.FC = () => {
   const { expenses } = useSelector((state: RootState) => state.budget);
 
-  const totalSum = expenses.reduce((sum, item) => {
-    return (sum += item.cost);
-  }, 0);
+  const totalSum = expenses.reduce((sum, item) => (sum += item.cost), 0);
 
   return (
     <div className={classes.block}>

@@ -6,9 +6,7 @@ import classes from "./Remaining.module.css";
 const Remaining: FC = () => {
   const { expenses, budget } = useSelector((state: RootState) => state.budget);
 
-  const totalSum = expenses.reduce((sum, item) => {
-    return (sum += item.cost);
-  }, 0);
+  const totalSum = expenses.reduce((sum, item) => (sum += item.cost), 0);
 
   return (
     <div className={classes.block}>

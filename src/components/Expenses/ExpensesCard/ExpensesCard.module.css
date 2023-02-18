@@ -28,7 +28,7 @@
   transition: 0.2s;
 }
 .inputTitle {
-  width: 200px;
+  width: 150px;
   height: 25px;
   border-radius: 10px;
   border: 1px solid black;
@@ -36,7 +36,6 @@
 }
 .btn {
   background-color: #006ef5;
-  width: 100px;
   border: none;
   outline: none;
   height: 30px;
@@ -44,7 +43,7 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 5px 20px;
   margin-left: 10px;
 }
 .cost {
